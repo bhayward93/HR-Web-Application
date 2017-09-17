@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrationSystem", "ICATask1\AdministrationSystem.csproj", "{3211E5E5-BF70-4581-A596-706E472BA9A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HebbraCoModel", "HebbraCoModel\HebbraCoModel.csproj", "{B0704817-B097-4E13-9E20-568893FF1E0D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SPA", "http://localhost:37444", "{F89BE874-B0C8-45A9-9414-C78A4F317E70}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_37444"
+		Debug.AspNetCompiler.PhysicalPath = "SPA\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_37444\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_37444"
+		Release.AspNetCompiler.PhysicalPath = "SPA\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_37444\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "SPA\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIService", "ICATask2\WebAPIService.csproj", "{18A25702-4983-447B-A370-AD9ACF9014BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F22A9120-20C1-45C6-816E-AD2E8CAE673D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "ICATask4\FrontEnd.csproj", "{27CE1BBF-FE33-41D8-A56E-0B3C460D12D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkillModel", "SkillModel\SkillModel.csproj", "{B45F7EEF-D5CA-4D0E-82E2-8EB273D9B890}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3211E5E5-BF70-4581-A596-706E472BA9A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3211E5E5-BF70-4581-A596-706E472BA9A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3211E5E5-BF70-4581-A596-706E472BA9A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3211E5E5-BF70-4581-A596-706E472BA9A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0704817-B097-4E13-9E20-568893FF1E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0704817-B097-4E13-9E20-568893FF1E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0704817-B097-4E13-9E20-568893FF1E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0704817-B097-4E13-9E20-568893FF1E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F89BE874-B0C8-45A9-9414-C78A4F317E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89BE874-B0C8-45A9-9414-C78A4F317E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F89BE874-B0C8-45A9-9414-C78A4F317E70}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89BE874-B0C8-45A9-9414-C78A4F317E70}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{18A25702-4983-447B-A370-AD9ACF9014BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A25702-4983-447B-A370-AD9ACF9014BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A25702-4983-447B-A370-AD9ACF9014BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A25702-4983-447B-A370-AD9ACF9014BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27CE1BBF-FE33-41D8-A56E-0B3C460D12D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27CE1BBF-FE33-41D8-A56E-0B3C460D12D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27CE1BBF-FE33-41D8-A56E-0B3C460D12D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27CE1BBF-FE33-41D8-A56E-0B3C460D12D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B45F7EEF-D5CA-4D0E-82E2-8EB273D9B890}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45F7EEF-D5CA-4D0E-82E2-8EB273D9B890}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45F7EEF-D5CA-4D0E-82E2-8EB273D9B890}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45F7EEF-D5CA-4D0E-82E2-8EB273D9B890}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6062E392-F80E-4AA4-91C8-67C6ED6A0C05}
+	EndGlobalSection
+EndGlobal

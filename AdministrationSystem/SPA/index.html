@@ -1,0 +1,216 @@
+﻿<!--COMMENT JAVASCRIPT
+    INTERACT WITH CODE
+    UNDERSTAND CODE-->
+<!--make it look up staff!-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page - My Simple Single Page App</title>
+   <style>
+       table td { padding:10px,10px,10px,10px}
+   </style>
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+    <script>
+    var buhttp = new XMLHttpRequest();
+    var staffhttp = new XMLHttpRequest();
+    var buurl = "http://localhost:33103/api/businessUnit";
+    var staffurl = "http://localhost:33103/api/Staff/BusinessUnit/";
+    var staffDetailsURL = "http://localhost:33103/api/Staff";
+
+
+    function start() {
+
+        document.getElementById("detaillist").style.visibility = "hidden"; //grab hold of detaillist and set its visibility to hidden.
+        document.getElementById("detail").style.visibility = "hidden"; //grab hold of detail and set its visibility to hidden.
+        buhttp.onreadystatechange = GetBuList; //when the state of buhttp changes, call GetBuList.
+        buhttp.open("GET", buurl); //open a get request to buurl
+        buhttp.send(); //send request
+    }
+
+
+
+    function GetBuList() {
+        if (buhttp.readyState == 4 && buhttp.status == 200) { //If request is finished and response is ready, and status is OK
+            var buisinessUnits = JSON.parse(buhttp.responseText); //parse the response text into a format that Javascript can understand
+            displayItemsInBuList(buisinessUnits); //feed the parsed response into displayItemsInBuList
+        }
+    }
+
+    function displayItemsInBuList(arr) {
+        // grab hold of the table object
+        var table = document.getElementById("bulist");
+        // Empty the table tag
+        table.innerHTML = "";
+        // walk down the LIST array
+        for (var i = 0; i < arr.length; i++) {
+            // insert a row in the next space available
+            var row = table.insertRow(0);
+            // insert td within that row
+            var cell1 = row.insertCell(0);
+            // insert another td withing the same row
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = arr[i].title;
+            // populate the first td with data from the array
+            var id = arr[i].businessUnitCode;
+            // populate the second row with a link
+            cell2.innerHTML = "&nbsp&nbsp&nbsp&nbsp<a href='#'     id='" + id + "' " + " >List Staff</a>"; 
+            //on click call get staff
+            document.getElementById(id).onclick = getStaff;
+        }
+    }
+
+
+    function getStaff(e) {
+
+        var detailUrl = staffurl + e.target.id; //append the staffurl with the staffCode.
+        staffhttp.onreadystatechange = requestDetail; //when the state of staffhttp changes, call requestDetail.
+        staffhttp.open("GET", detailUrl); //Open get request to detailUrl.
+        staffhttp.send(); //send request.
+        
+
+    }
+
+    function requestDetail() {
+        if (staffhttp.readyState == 4 && staffhttp.status == 200) { //If request is finished and response is ready, and status is OK.
+            var staffList = JSON.parse(staffhttp.responseText); //parse JSON into a shape Javascript can utilize.
+            displayDetail(staffList); //pass the parsed JSON into the displayDetail function. 
+
+
+            
+
+        }
+    }
+
+    function displayDetail(arr) {
+        // grab hold of the table object
+        document.getElementById("detaillist").style.visibility = "visible";
+        var table = document.getElementById("stafflist");
+        table.style.visibility = "visible";
+
+        // Empty the table tag
+        table.innerHTML = "";
+        // walk down the LIST array
+        for (var i = 0; i < arr.length; i++) {
+            // insert a row in the next space available
+            var row = table.insertRow(0);
+            // insert td within that row
+            var cell1 = row.insertCell(0);
+            // insert another td withing the same row
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = arr[i].firstName+" "+arr[i].lastName;
+            // populate the first td with data from the array
+            var id = arr[i].staffCode; 
+            // populate the second row with a link
+            cell2.innerHTML = "&nbsp&nbsp&nbsp&nbsp<a href='#'     id='" + id + "' " + " >Staff Detail</a>";
+            document.getElementById(id).onclick = getStaffDetails;
+        }
+    }
+
+    function getStaffDetails(e) {
+        var getStaffDetailsURL = staffDetailsURL + "/" + e.target.id; //appends the staffCode to the end of the getStaffDetails URL
+        staffhttp.onreadystatechange = requestStaffDetail;  //when the state of staffhttp changes, call requestStaffDetail.
+        staffhttp.open("GET", getStaffDetailsURL);  //Open get request to getStaffDetailsURL.
+        staffhttp.send(); //sendRequest
+
+
+    }
+    
+    function requestStaffDetail() {
+        if (staffhttp.readyState == 4 && staffhttp.status == 200) //If request is finished and response is ready, and status is OK.
+        {
+            var staffList = JSON.parse(staffhttp.responseText); //parse the response into a form JS can understand.
+            displayStaffDetail(staffList); //feeds the variable into displayStaffDetail.
+        }
+    }
+
+    function displayStaffDetail(arr) {
+        document.getElementById("detail").style.visibility = "visible"; //grabs a hold of detail and makes it visible.
+
+        var itemDetail = document.getElementById("itemDetail") //grab hold of itemDetail.
+        itemDetail.style.visibility = "visible";  //makes it visible.
+
+        var itemId = document.getElementById("itemId"); //grab hold of itemId.
+        itemId.style.visibility = "visible"; //make it visible.
+
+
+        var itemName = document.getElementById("itemName"); //grab hold of itemName
+        itemName.style.visibility = "visible"; //make it visible.
+
+        itemDetail.innerHTML = arr.emailAddress; //set the innerHTML of itemDetail to the email address of the arg fed in.
+        itemId.innerHTML = arr.staffCode;  //set the innerHTML of the itemId to the staffCode of the arg fed in.
+        itemName.innerHTML = arr.firstName + " " + arr.lastName; //set the innerHTML of the itemName to the firstName + lastName of the arg fed in. 
+    }
+
+    window.onload = start; //start
+
+
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Application name</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+
+
+
+        <div class="jumbotron">
+            <h1>ASP.NET</h1>
+            <p class="lead">This SPA uses raw dirty JavaScript to demo the relationship between Javascript and Http</p>
+            <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Our Business Units</h2>
+                <table id="bulist"></table>
+               
+            </div>
+            <div class="col-md-4">
+               
+                    <h2 id="detaillist">Staff List</h2>
+                    <table id="stafflist"></table>
+               
+             </div>
+            <div class="col-md-4">
+                <div id="detail">
+                    <h2>Staff Detail</h2>
+                        <p id="itemId"></p>
+                        <p id="itemName"></p>
+                        <p id="itemDetail"></p>
+                    </div>
+                </div>
+            </div>
+
+        <hr />
+        <footer>
+            <p>&copy; 2015 - My ASP.NET Application</p>
+        </footer>
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+</div>
+
+
+
+
+</body>
+</html>
